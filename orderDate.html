@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OrderDate</title>
 </head>
 <body>
     
@@ -12,13 +12,12 @@
     fetch("https://northwind.vercel.app/api/orders")
       .then((res) => res.json())
       .then((res) => {
-        var countryUSA = 0;
         res.forEach(element => {
-            if(element.shipAddress.country === "USA"){
-                countryUSA = countryUSA + 1;                
+            var orderDate = new Date(element.orderDate);
+            if(orderDate.getFullYear() === 1996){
+                console.log(element.orderDate);
             }
         });
-        console.log("USA'da bulunan adres sayısı: ", countryUSA);
       });
 </script>
 </html>
