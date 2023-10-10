@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    fetch("https://northwind.vercel.app/api/orders")
+      .then((res) => res.json())
+      .then((res) => {
+        res.forEach(element => {
+            var orderDate = new Date(element.orderDate);
+            var shippedDate = new Date(element.shippedDate);
+            
+            if(shippedDate > orderDate){
+                console.log("Sipariş geç teslim edilmiştir.");
+            }
+        });
+      });
+</script>
+</html>
